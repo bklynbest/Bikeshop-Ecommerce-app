@@ -1,26 +1,86 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Nameofapp</title>
-    <%= csrf_meta_tags %>
+<head>
+<title>Nameofapp</title>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<%= csrf_meta_tags %>
+</head>
 
   <body>
-    <nav>
-  <ul>
-    <li><%= link_to "Home", root_path %></li>
-    <li><%= link_to "About", simple_pages_about_path %></li>
-    <li><%= link_to "Contact", simple_pages_contact_path %></li>
-  </ul>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#Home">Berlin Bikes</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-link" id="navtext" href="#"><span class="sr-only">(current)</span>
+        <%= link_to "Home", root_path %></a>
+      <a class="nav-link" id="navtext" href="#">
+        <%= link_to "About", simple_pages_about_path %>
+      </a>
+      <a class="nav-link" id="navtext" href="#">
+        <%= link_to "Contact", simple_pages_contact_path %>
+      </a>
+</div>
+</div>
 </nav>
 
 <%= yield %>
 
-<footer>
-  &copy; 2018 Bike Berlin
+
+<!--Footer-->
+<footer class="page-footer font-small blue pt-4 mt-4">
+
+<!--Footer Links-->
+<div class="container-fluid text-center text-md-left">
+<div class="row" id="footer">
+
+<!--First column-->
+<div class="col-md-6">
+<h5 class="text-uppercase">Berlin Bikes</h5>
+<p>Where technology and leisure meet</p>
+</div>
+<!--/.First column-->
+
+<!--Second column-->
+<div class="col-md-6">
+<h5 class="text-uppercase">Social Links</h5>
+<ul class="list-unstyled">
+<li>
+  <a href="Facebook.com">Facebook</a>
+</li>
+<li>
+  <a href="Twitter.com">Twitter</a>
+</li>
+<li>
+  <a href="Youtube.com">Youtube</a>
+</li>
+<li>
+  <a href="Snapchat.com">Snapchat</a>
+</li>
+</ul>
+</div>
+<!--/.Second column-->
+</div>
+</div>
+<!--/.Footer Links-->
+
+<!--Copyright-->
+<div class="footer-copyright py-3 text-center">
+© 2018 Copyright:
+<a href="https://mdbootstrap.com/material-design-for-bootstrap/"> MDBootstrap.com </a>
+</div>
+<!--/.Copyright-->
+
 </footer>
+<!--/.Footer-->
   </body>
 </html>
