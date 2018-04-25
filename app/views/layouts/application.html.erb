@@ -19,19 +19,17 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-        <%= link_to "Home", root_path %>
-        <%= link_to "About", simple_pages_about_path %>
-        <%= link_to "Contact", simple_pages_contact_path %>
-</div>
-<div class="searchform">
-<%= form_with(url: products_path, method: 'get', local: true) do |form| %>
-  <%= form.label :q, 'Search for:' %>
-  <%= form.text_field :q, id: 'q', value: params[:q] %>
-  <%= form.submit 'Search' %>
-<% end %>
-</div>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="float: right;">
+      <div class="navbar-nav">
+        <form action="/products" accept-charset="UTF-8" method="get" ><input name="utf8" type="hidden" value="✓">
+          <label for="q">Search for:</label>
+          <input id="q" type="text" name="q">
+          <input type="submit" name="commit" value="Search" data-disable-with="Search">
+        </form>
+          <a href="/">Home</a>
+          <a href="/simple_pages/about">About</a>
+          <a href="/simple_pages/contact">Contact</a>
+      </div>
 </div>
 </nav>
 
