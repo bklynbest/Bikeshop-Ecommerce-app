@@ -9,10 +9,16 @@ h1 {
 }
 .navbar{
   background-color: #680E65;
+  padding-bottom: 4px;
 }
 .navbar-nav{
   float:right;
 }
+
+.navbar-brand {
+  margin-top: 13px;
+}
+
 a{
   color: #99004d;
   padding: 5px;
@@ -35,6 +41,13 @@ a:focus, a:hover {
   padding:.5em;
 }
 
+#contactform {
+  width: 50%;
+  margin: auto;
+}
+.form_label {
+  float: right;
+}
 /***aboutme***/
 .aboutme {
   text-align:center;
@@ -42,4 +55,11 @@ a:focus, a:hover {
 }
 .searchform{
   display: inline-flex;
+}
+
+.carousel-caption {
+  color: #983737;
+}
+.searchform1 {
+  padding-bottom: 4px;
 }
