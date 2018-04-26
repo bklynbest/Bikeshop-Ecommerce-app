@@ -17,17 +17,23 @@ h1 {
 
 .navbar-brand {
   margin-top: 13px;
-}
-
-a{
   color: #99004d;
-  padding: 5px;
 }
-a:focus, a:hover {
-  color: #bfcc18;
+.navbar-brand  {
   text-decoration: wavy;
 }
 
+.nav_links {
+  color: #99004d;
+  padding: 5px;
+}
+.nav_links a:focus, a:hover {
+  color: #bfcc18;
+  text-decoration: wavy;
+}
+.devise_form {
+
+}
 #footer {
   background-color: #88567b;
 }
@@ -62,4 +68,12 @@ a:focus, a:hover {
 }
 .searchform1 {
   padding-bottom: 4px;
+}
+
+.field_with_errors {
+  background-color: #987575;
+}
+
+.social_links {
+  background: #a9a9a9;
 }

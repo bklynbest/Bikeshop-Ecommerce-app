@@ -20,18 +20,27 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="float: right;">
-      <div class="navbar-nav">
+      <nav class="navbar-nav">
         <form action="/products" accept-charset="UTF-8" method="get" class="searchform1"><input name="utf8" type="hidden" value="✓">
           <label for="q">Search for:</label>
           <input id="q" type="text" name="q">
           <input type="submit" name="commit" value="Search" data-disable-with="Search">
         </form>
-          <a href="/">Home</a>
-          <a href="/simple_pages/about">About</a>
-          <a href="/simple_pages/contact">Contact</a>
-      </div>
+          <a class = "nav_links" href="/">Home</a>
+          <a class = "nav_links" href="/simple_pages/about">About</a>
+          <a class = "nav_links" href="/simple_pages/contact">Contact</a>
+          <nav class="nav pull-right">
+              <% if user_signed_in? %>
+              <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+              <% else %>
+              <%= link_to('Login', new_user_session_path) %>
+              <% end %>
+          </nav>
+      </nav>
 </div>
 </nav>
+<p class ="notice"><%= notice %></p>
+<p class ="alert"><%= alert %></p>
 
 <%= yield %>
 
@@ -44,16 +53,16 @@
 <div class="row" id="footer">
 
 <!--First column-->
-<div class="col-md-6">
+<div class="col-md-6" style="background: #b0c4de">
 <h5 class="text-uppercase">Berlin Bikes</h5>
 <p>Where technology and leisure meet</p>
 </div>
 <!--/.First column-->
 
 <!--Second column-->
-<div class="col-md-6">
+<div class="col-md-6" style="background:#5f9ea0">
 <h5 class="text-uppercase">Social Links</h5>
-<ul class="list-unstyled">
+<ul class="list-unstyled social_links">
 <li>
   <a href="Facebook.com">Facebook</a>
 </li>
