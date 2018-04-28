@@ -1,30 +1,50 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<h1>
   <strong>Name:</strong>
   <%= @product.name %>
-</p>
-
+</h1>
+<div class="row">
+<div class="showproducts col-sm-6 col-md-6 col-lg-6">
 <p>
   <strong>Description:</strong>
   <%= @product.description %>
 </p>
-
+</div>
+<div class="col-sm-6 col-md-6 col-lg-6">
 <p>
   <strong>Image url:</strong>
   <%= @product.image_url %>
 </p>
+</div>
+</div>
+<div class="row">
+  <div class="col-sm-6 col-md-6 col-lg-6">
 <p>
   <strong>Colour:</strong>
   <%= @product.colour %>
 </p>
+</div>
+<div class="col-sm-6 col-md-6 col-lg-6">
 <p>
   <strong>Price:</strong>
   <%= @product.price %>
 </p>
-<p>
-  <strong></strong>
+</div>
+</div>
+<h1>
+  <strong>Rated Comments</strong>
+</h1>
+<div class="ratedcomments col-sm-6 col-md-6 col-lg-6">
+<p class="ratingasc">
+  <%= @product.highest_rating_comment %>
 </p>
+</div>
+<div class="ratedcomments col-sm-6 col-md-6 col-lg-6">
+<p class="ratingdsc">
+  <%= @product.lowest_rating_comment %>
+</p>
+</div>
 <%= link_to 'New', new_product_path %>|
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
