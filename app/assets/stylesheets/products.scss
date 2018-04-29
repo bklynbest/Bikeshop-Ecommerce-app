@@ -13,15 +13,17 @@ th {
 .field {
   color: #dc9b47;
 }
-/*** comments ****/ 
+/*** comments ****/
 .ratedcomments {
   margin: auto;
-  background-color: gray;
+
 }
 .ratingasc {
   float: left;
+  color: gray;
 }
 
 .ratingdsc {
   float: right;
+  color: gray;
 }
