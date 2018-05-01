@@ -16,13 +16,12 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <nav class="nav pull-left logo"><%=link_to('WorldWideBikes', root_path) %>
   </nav>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+<!--  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="float: right;">
+  </button>-->
       <nav class="navbar-nav">
         <form action="/products" accept-charset="UTF-8" method="get" class="searchform1"><input name="utf8" type="hidden" value="✓">
-          <label for="q">Search for:</label>
+          <label for="q" style="color:aliceblue;">Search for:</label>
           <input id="q" type="text" name="q">
           <input type="submit" name="commit" value="Search" data-disable-with="Search">
         </form>
@@ -38,7 +37,6 @@
               <% end %>
           </nav>
       </nav>
-</div>
 </nav>
 <p class ="notice"><%= notice %></p>
 <p class ="alert"><%= alert %></p>
