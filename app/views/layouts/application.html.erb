@@ -19,24 +19,24 @@
 <!--  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>-->
-      <nav class="navbar-nav">
+      <nav class="navbar-nav row">
         <form action="/products" accept-charset="UTF-8" method="get" class="searchform1"><input name="utf8" type="hidden" value="✓">
           <label for="q" style="color:aliceblue;">Search for:</label>
           <input id="q" type="text" name="q">
           <input type="submit" name="commit" value="Search" data-disable-with="Search">
         </form>
-          <%= link_to('Home', root_path) %>
-          <%= link_to('Products', products_path) %>
-          <%= link_to('About', simple_pages_about_path) %>
-          <%= link_to('Contact', simple_pages_contact_path) %>
-          <nav class="nav pull-right">
+        <div class="nav_links">
+          <%= link_to('Home', root_path) %> |
+          <%= link_to('Products', products_path) %> |
+          <%= link_to('About', simple_pages_about_path) %> |
+          <%= link_to('Contact', simple_pages_contact_path) %> |
               <% if user_signed_in? %>
               <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
               <% else %>
               <%= link_to('Login', new_user_session_path) %>
               <% end %>
-          </nav>
       </nav>
+    </div>
 </nav>
 <p class ="notice"><%= notice %></p>
 <p class ="alert"><%= alert %></p>
