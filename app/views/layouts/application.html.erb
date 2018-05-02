@@ -12,32 +12,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <%= csrf_meta_tags %>
 </head>
-  <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <nav class="nav pull-left logo"><%=link_to('WorldWideBikes', root_path) %>
-  </nav>
+<body>
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="nav pull-left logo"><%=link_to('WorldWideBikes', root_path) %></nav>
 <!--  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>-->
-      <nav class="navbar-nav row">
-        <form action="/products" accept-charset="UTF-8" method="get" class="searchform1"><input name="utf8" type="hidden" value="✓">
-          <label for="q" style="color:aliceblue;">Search for:</label>
-          <input id="q" type="text" name="q">
-          <input type="submit" name="commit" value="Search" data-disable-with="Search">
-        </form>
-        <div class="nav_links">
-          <%= link_to('Home', root_path) %> |
-          <%= link_to('Products', products_path) %> |
-          <%= link_to('About', simple_pages_about_path) %> |
-          <%= link_to('Contact', simple_pages_contact_path) %> |
-              <% if user_signed_in? %>
-              <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
-              <% else %>
-              <%= link_to('Login', new_user_session_path) %>
-              <% end %>
-      </nav>
-    </div>
-</nav>
+    <nav class="navbar-nav row">
+      <form action="/products" accept-charset="UTF-8" method="get" class="searchform1"><input name="utf8" type="hidden" value="✓">
+        <label for="q" style="color:aliceblue;">Search for:</label>
+        <input id="q" type="text" name="q">
+        <input type="submit" name="commit" value="Search" data-disable-with="Search">
+      </form>
+      <div class="nav_links">
+        <%= link_to('Home', root_path) %> |
+        <%= link_to('Products', products_path) %> |
+        <%= link_to('About', simple_pages_about_path) %> |
+        <%= link_to('Contact', simple_pages_contact_path) %> |
+          <% if user_signed_in? %>
+          <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+          <% else %>
+          <%= link_to('Login', new_user_session_path) %>
+          <% end %>
+      </div>
+    </nav>
+    </nav>
+  </div>
 <p class ="notice"><%= notice %></p>
 <p class ="alert"><%= alert %></p>
 
