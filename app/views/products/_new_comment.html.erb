@@ -1,19 +1,18 @@
 <% if signed_in? %>
   <h4>Add a review:</h4>
-  <%= form_for([@product, @product.comments.build]) do |f| %>
-    <p>
-      <%= f.label :body, "Comments" %><br>
-      <%= f.text_area :body %>
-    </p>
-    <p>
-      <div class="rating"></div>
-    </p>
-    <p>
-      <%= f.label :rating %><br>
-      <%= f.text_field :rating, class: "rating" %>
-    </p>
-    <p>
-      <%= f.submit "Submit" %>
-    </p>
+  <%= form_for([@product, @product.comments.build]) do |form| %>
+  <div class="container-fluid" id="newcomment">
+    <div class="form-group">
+      <%= form.label :body, "Comments" %><br>
+      <%= form.text_area :body, class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :rating %><br>
+      <%= form.text_field :rating, class: "rating", class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.submit "Submit", class: "form_label" %>
+    </div>
+  </div>
   <% end %>
 <% end %>

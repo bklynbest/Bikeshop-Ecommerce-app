@@ -51,8 +51,13 @@ font-size: 2em;
 }
 
 #contactform {
-  width: 50%;
   margin: auto;
+  width: fit-content;
+}
+/*** forms ***/
+.form-group {
+  color: #dc9b47;
+  width: fit-content;
 }
 .form_label {
   float: right;

@@ -20,11 +20,16 @@
     <span class="navbar-toggler-icon"></span>
   </button>-->
     <nav class="navbar-nav row">
-      <form action="/products" accept-charset="UTF-8" method="get" class="searchform1"><input name="utf8" type="hidden" value="✓">
+      <%= form_with(url: products_path, method: 'get', local: true, class: "searchform1") do |form| %>
+        <%= form.label :q, 'Search for:', style:"color:aliceblue;" %>
+        <%= form.text_field :q, id: 'q', value: params[:q] %>
+        <%= form.submit 'Search' %>
+      <% end %>
+      <!--<form action="/products" accept-charset="UTF-8" method="get" class="searchform1"><input name="utf8" type="hidden" value="✓">
         <label for="q" style="color:aliceblue;">Search for:</label>
         <input id="q" type="text" name="q">
         <input type="submit" name="commit" value="Search" data-disable-with="Search">
-      </form>
+      </form> --->
       <div class="nav_links">
         <%= link_to('Home', root_path) %> |
         <%= link_to('Products', products_path) %> |
@@ -39,8 +44,12 @@
     </nav>
     </nav>
   </div>
-<p class ="notice"><%= notice %></p>
-<p class ="alert"><%= alert %></p>
+  <% if notice %>
+      <p id="notice" class="alert alert-info"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+      <p id="alert" class="alert alert-info glyphicon glyphicon-asterisk"><%= alert %></p>
+  <% end %>
 
 <%= yield %>
 
