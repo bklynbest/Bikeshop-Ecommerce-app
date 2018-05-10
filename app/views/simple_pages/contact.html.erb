@@ -12,17 +12,20 @@
 <div class="row" id= "contactform">
   <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name, class: "form-control", placeholder: "Enter Name" %>
+    <%= form.text_field :name, class: "form-control contact_name", placeholder: "Enter Name", type:"text" %>
+    <span class="error">This field is required</span>
   </div>
   <div class="form-group">
     <%= form.label :email %>
-    <%= form.text_field :email, class: "form-control", placeholder: "Enter Email" %>
+    <%= form.text_field :email, class: "form-control contact_email", placeholder: "Enter Email", type:"email" %>
+    <span class="error">A valid email is required</span>
   </div>
   <div class="form-group">
     <%= form.label :message %>
-    <%= form.text_area :message, class: "form-control", placeholder: "Enter Message", rows: 5 %>
+    <%= form.text_area :message, class: "form-control contact_message", placeholder: "Enter Message", rows: 5, type:"text" %>
+    <span class="error">This field is required</span>
   </div>
-  <div class="form-group">
+  <div class="form-group contact_submit">
   <%= form.submit "Send", class: "form_label" %>
 </div>
 </div>
