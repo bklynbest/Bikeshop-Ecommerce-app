@@ -6,14 +6,9 @@ class ProductsController < ApplicationController
 def index
   if params[:q]
       search_term = params[:q]
-      if(Rails.env.production?)
-        # use ilike for case insensitivity on postres
-        @products = Product.where("name ilike ? OR description ilike ?", "%#{search_term}%", "%#{search_term}%")
-      else
-        @products = Product.where("name LIKE ?", "%#{search_term}%")
-      end
-    else
-      @products = Product.all
+        @products = Product.search(search_term)
+  else
+        @products = Product.all
   end
 end
 
