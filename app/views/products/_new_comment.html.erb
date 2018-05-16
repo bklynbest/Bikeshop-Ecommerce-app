@@ -1,6 +1,6 @@
 <% if signed_in? %>
   <h4>Add a review:</h4>
-  <%= form_for([@product, @product.comments.build]) do |form| %>
+  <%= form_for([@product, @product.comments.build], remote: true) do |form| %>
   <div class="container-fluid" id="newcomment">
     <div class="form-group">
       <%= form.label :body, "Comments" %><br>

@@ -40,7 +40,7 @@
       <%= @product.lowest_rating_comment %>
     </p>
   </div>
-    <p>Average Rating: <div class="rated" data-score="
+    <p>Average Rating: <div class="rated" id= "average_rating" data-score="
       <%= @product.average_rating %>"></div>
     </p>
   <%= form_with(url: '/payments/create') do |form| %>
