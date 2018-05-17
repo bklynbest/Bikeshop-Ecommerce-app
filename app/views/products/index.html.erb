@@ -1,8 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Products</h1>
-
-<%= render @products %>
+<% cache(cache_key_for_products) do %>
+  <%= render @products %>
+  <% end %>
 
       <!--
       <div class="col-sm-2 col-md-4">
