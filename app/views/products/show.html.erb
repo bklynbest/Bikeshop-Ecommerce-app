@@ -8,6 +8,7 @@
     <strong>Image:</strong>
     <%= image_tag(@product.image_url, width: "350", class: "img-responsive product_image img-zoom", data_zoom_image: @product.image_url) %>
   </p>
+<div class="row" data-product-id="<%= @product.id %>">
   <div class="col-sm-6 col-md-6 col-lg-6">
     <p>
       <strong>Colour:</strong>
@@ -20,6 +21,7 @@
       <%= @product.price %>
     </p>
   </div>
+</div>
   <p>
     <strong>Description: </strong>
     <%= @product.description %>
