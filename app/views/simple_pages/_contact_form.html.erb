@@ -1,0 +1,26 @@
+<%= form_with(url:"/simple_pages/thank_you", method: "post", local: true) do |form| %>
+<div class="row hide-form" id= "contactform">
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control contact_name", placeholder: "Enter Name", type:"text", :required => true %>
+    <span class="error">This field is required</span>
+    <p id= "visible-name"></p>
+  </div>
+  <div class="form-group">
+    <%= form.label :email %>
+    <%= form.text_field :email, class: "form-control contact_email", placeholder: "Enter Email", type:"email", :required => true %>
+    <span class="error">A valid email is required</span>
+    <p id= "visible-email"></p>
+  </div>
+  <div class="form-group">
+    <%= form.label :message %>
+    <%= form.text_area :message, class: "form-control contact_message", placeholder: "Enter Message", rows: 5, type:"text", :required => true %>
+    <span class="error">This field is required</span>
+    <p id= "visible-message"></p>
+  </div>
+  <div class="form-group">
+  <%= form.submit "Send", class: "form_label btn contact_submit" %>
+</div>
+</div>
+
+<% end %>

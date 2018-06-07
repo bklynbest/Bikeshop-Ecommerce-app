@@ -1,0 +1,24 @@
+<div class="navigation">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="nav pull-left logo"><%=link_to('WorldWideBikes', root_path) %></nav>
+    <nav class="navbar-nav row">
+      <%= form_with(url: products_path, method: 'get', local: true, class: "searchform1") do |form| %>
+      <%= form.label :q, 'Search for:', style:"color:aliceblue;" %>
+      <%= form.text_field :q, id: 'q', value: params[:q] %>
+      <%= form.submit 'Search' %>
+      <% end %>
+
+    <div class="nav_links">
+      <%= link_to('Home', root_path) %> |
+      <%= link_to('Products', products_path) %> |
+      <%= link_to('About', simple_pages_about_path) %> |
+      <%= link_to('Contact', simple_pages_contact_path) %> |
+      <% if user_signed_in? %>
+      <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+      <% else %>
+      <%= link_to('Login', new_user_session_path) %>
+      <% end %>
+    </div>
+  </nav>
+</nav>
+</div>

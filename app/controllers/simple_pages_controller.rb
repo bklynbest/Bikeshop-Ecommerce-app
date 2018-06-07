@@ -7,6 +7,8 @@ class SimplePagesController < ApplicationController
   end
 
   def contact
+    @name = "BritanniaDEV"
+    @email = 'Bklynbest718@gmail.com'
   end
 
   def thank_you

@@ -1,105 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>WorldWideBikes</title>
+  <title>WorldWideBikes</title>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
 
-<%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
 </head>
-<body>
-  <div class="navigation">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <nav class="nav pull-left logo"><%=link_to('WorldWideBikes', root_path) %></nav>
-<!--  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>-->
-    <nav class="navbar-nav row">
-      <%= form_with(url: products_path, method: 'get', local: true, class: "searchform1") do |form| %>
-        <%= form.label :q, 'Search for:', style:"color:aliceblue;" %>
-        <%= form.text_field :q, id: 'q', value: params[:q] %>
-        <%= form.submit 'Search' %>
+  <body>
+      <%= render 'shared/nav_links' %>
+      <% if notice %>
+    <p id="notice" class="alert alert-info"><%= notice %></p>
       <% end %>
-      <!--<form action="/products" accept-charset="UTF-8" method="get" class="searchform1"><input name="utf8" type="hidden" value="✓">
-        <label for="q" style="color:aliceblue;">Search for:</label>
-        <input id="q" type="text" name="q">
-        <input type="submit" name="commit" value="Search" data-disable-with="Search">
-      </form> --->
-      <div class="nav_links">
-        <%= link_to('Home', root_path) %> |
-        <%= link_to('Products', products_path) %> |
-        <%= link_to('About', simple_pages_about_path) %> |
-        <%= link_to('Contact', simple_pages_contact_path) %> |
-          <% if user_signed_in? %>
-          <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
-          <% else %>
-          <%= link_to('Login', new_user_session_path) %>
-          <% end %>
-      </div>
-    </nav>
-    </nav>
-  </div>
-  <% if notice %>
-      <p id="notice" class="alert alert-info"><%= notice %></p>
-  <% end %>
-  <% if alert %>
-      <p id="alert" class="alert alert-info glyphicon glyphicon-asterisk"><%= alert %></p>
-  <% end %>
+      <% if alert %>
+    <p id="alert" class="alert alert-info glyphicon glyphicon-asterisk"><%= alert %></p>
+      <% end %>
 
-<%= yield %>
+      <%= yield %>
+
+      <%= render 'shared/application_footer'%>
 
 
-<!--Footer-->
-<footer class="page-footer font-small blue pt-4 mt-4">
-
-<!--Footer Links-->
-<div class="container-fluid text-center text-md-left">
-<div class="row" id="footer">
-
-<!--First column-->
-<div class="col-md-6" style="background: #b0c4de">
-<h5 class="text-uppercase">Berlin Bikes</h5>
-<p>Where technology and leisure meet</p>
-</div>
-
-<!--/.First column-->
-
-<!--Second column-->
-<div class="col-md-6" style="background:#5f9ea0">
-<h5 class="text-uppercase">Social Links</h5>
-<ul class="list-unstyled social_links">
-<li>
-  <a href="https://www.Facebook.com">Facebook</a>
-</li>
-<li>
-  <a href="https://Twitter.com">Twitter</a>
-</li>
-<li>
-  <a href="https://Youtube.com">Youtube</a>
-</li>
-<li>
-  <a href="Snapchat.com">Snapchat</a>
-</li>
-</ul>
-</div>
-<!--/.Second column-->
-</div>
-</div>
-<!--/.Footer Links-->
-
-<!--Copyright-->
-<div class="footer-copyright py-3 text-center">
-© 2018 Copyright:
-<a href="https://facebook.com/britanniadev/"> BritanniaDEV</a>
-</div>
-<!--/.Copyright-->
-
-</footer>
-<!--/.Footer-->
   </body>
 </html>
