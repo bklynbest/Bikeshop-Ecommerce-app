@@ -1,15 +1,15 @@
 <div class="container-fluid space">
-   <% cache product do %>
-      <%= image_tag(product.image_url, width: "350", class: "img-responsive img-zoom product_image", data_zoom_image: product.image_url)if product.image_url.present? %>
-      <a href="#"><h1><%= product.name %></h1></a>
-      <p class="info"><%= product.description %></p>
-      <p><%= product.colour %></p>
-      <p>
-        <strong><%= product.price %></strong>
-      </p>
-        <td><%= link_to 'New', new_product_path %></td> |
-        <td><%= link_to 'Show', product %></td> |
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <% end %>
-    <!--/col -->
-  </div>
+  <% cache product do %>
+  <%= image_tag(product.image_url, width: "350", class: "img-responsive img-zoom product_image", data_zoom_image: product.image_url)if product.image_url.present? %>
+  <a href="#"><h1><%= product.name %></h1></a>
+  <p class="info"><%= product.description %></p>
+  <p><%= product.colour %></p>
+  <p>
+    <strong><%= product.price %></strong>
+  </p>
+  <td><%= link_to 'New', new_product_path %></td> |
+  <td><%= link_to 'Show', product %></td> |
+  <td><%= link_to 'Edit', edit_product_path(product) %></td>
+  <% end %>
+  <!--/col -->
+</div>

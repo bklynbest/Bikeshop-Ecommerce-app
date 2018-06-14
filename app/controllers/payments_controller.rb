@@ -12,13 +12,13 @@ class PaymentsController < ApplicationController
         source: token,
       )
 
-    if charge.paid
-      Order.create(
-        product_id: @product.id,
-        user_id: @user_id,
-        total: @product.price
-      )
-    end
+      if charge.paid
+        Order.create(
+          product_id: @product.id,
+          user_id: @user_id,
+          total: @product.price
+        )
+      end
 
     rescue Stripe::CardError => e
       # The card has been declined
@@ -26,6 +26,6 @@ class PaymentsController < ApplicationController
       err = body[:error]
       flash[:error] = "Unfortunately, there was an error processing your payment: #{err[:message]}"
     end
-    redirect_to simple_pages_payment_thank_you_path
+    redirect_to product_path(@product), notice: "#{@product.name} has been purchased successfully!"
   end
 end

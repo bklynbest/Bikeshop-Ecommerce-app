@@ -12,6 +12,6 @@ FactoryBot.define do
   factory :admin, class: User do
     email
     password "234234234"
-    admin true 
+    admin true
   end
 end

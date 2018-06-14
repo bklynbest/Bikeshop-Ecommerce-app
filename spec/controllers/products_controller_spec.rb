@@ -1,140 +1,83 @@
 require 'rails_helper'
 
 describe ProductsController, type: :controller do
-  # let(:user){ User.create!(first_name: 'demo', last_name: 'account', email: "demo@example.com", password: '123456', password_confirmation: '123456') }
-  # let(:product) {Product.create!(name: 'PES 18', description: 'Stunning football/sport game brought to you by Konami', image_url: 'PES18.jpg', category: 'Sport/Football', price: 39.9)}
 
+  context "GET #index" do
+    it 'renders the index template' do
+      get :index
+      expect(response).to be_ok
+      expect(response).to render_template('index')
+    end
+  end
 
-  describe 'GET #index' do
+  context "GET #new" do
+    it 'renders the new template' do
+      get :new
+      expect(response).to be_ok
+      expect(response).to render_template('new')
+    end
+  end
+
+  context "GET #edit" do
+    before do
+      @product = Product.create(name: "A test", description: "test", colour: "red", price: 100)
+    end
+
+    it 'renders edit template' do
+      get :edit, params: { id: @product.id }
+      expect(response).to be_ok
+      expect(response).to render_template('edit')
+    end
+  end
+
+  context "GET #show" do
+    before do
+      @product = Product.create(name: "I'm doing test", description: "test", colour: "blue", price: 100)
+    end
+
+    it 'This renders a show template' do
+      get :show, params: { id: @product.id }
+      expect(response).to be_ok
+      expect(response).to render_template('show')
+    end
+  end
+
+  context "POST #create" do
     before do
       @user = FactoryBot.create(:user)
-      @product = FactoryBot.create(:product)
-      sign_in @user
     end
 
-    context 'when products are created' do
-      it 'renders  index template' do
-        get :index
-        expect(response).to be_ok
-        expect(response).to render_template('index')
-      end
-    end
-  end
-
-  describe 'GET #show' do
-    before do
-      @user = FactoryBot.create(:user)
-      @product = FactoryBot.create(:product)
-      sign_in @user
+    it 'if the attrs are correct show the product page' do
+      @product = Product.create(name: "This is a test", description: "test", colour: "blue", price: 100)
+      post :create, params: { product: { name: @product.name, description: @product.description, price: @product.price, colour: @product.colour} }
+      expect(response).to redirect_to(:action => :show, :id => assigns(:product).id)
     end
 
-    context 'when a product is created' do
-      it 'renders show template' do
-        get :show, params: { id: @product.id}
-        expect(response).to be_ok
-        expect(response).to render_template('show')
-      end
-    end
-  end
+    context "POST #update" do
 
-  describe 'GET #new' do
-    before do
-      @user_admin = FactoryBot.create(:admin)
-      @product = FactoryBot.create(:product)
-      sign_in @user_admin
-    end
-    context 'when add new product' do
-      it 'renders new template' do
-        get :new
-        expect(response).to be_ok
-        expect(response).to render_template('new')
-      end
-    end
-  end
-
-  describe 'GET #edit' do
-    before do
-      @product = FactoryBot.create(:product)
-      @user_admin = FactoryBot.create(:admin)
-      @user = FactoryBot.create(:user)
-    end
-    context "When the user is admin" do
       before do
-        sign_in @user_admin
+        @product = Product.create(name: "Generating a test", description: "test", colour: "orange", price: 100)
       end
-      it "renders the edit template" do
-        get :edit, params: {id: @product.id}
-        expect(response).to be_ok
-        expect(response).to render_template("edit")
+
+      it 'updates product attrs' do
+        @update = { name: "Softboard"}
+        post :update, params: {id: @product.id, product: @update }
+        @product.reload
+        expect(@product.name).to eq "Softboard"
       end
     end
-    context "When user is not admin and logged in" do
+
+    context "DELETE #destroy" do
       before do
-        sign_in @user
-      end
-      it "redirects to root path" do
-        get :edit, params: {id: @product.id}
-        expect(response).to have_http_status(302)
-        expect(response).to redirect_to(root_path)
-      end
-    end
-    context "When a user is not admin and not logged in" do
-      it "redirects to root path" do
-        get :edit, params: {id: @product.id}
-        expect(response).to redirect_to(root_path)
-      end
-    end
-  end
-
-  describe 'POST #create' do
-    context 'when a new product created' do
-      before do
-        @user_admin = FactoryBot.create(:admin)
-        @user = FactoryBot.create(:user)
-        @product = FactoryBot.create(:product)
-        sign_in @user_admin
-      end
-      it 'new product with its valid details will be stored' do
-        post :create, params:{product: {id: @product.id ,name: @product.name, description: @product.description, image_url: @product.image_url, category: @product.category, price: @product.price}}
-        expect(assigns(:product)).to be_a(Product)
+        @product = Product.create(name: "Generating a test", description: "test", colour: "blue", price: 100)
       end
 
-      it "is a valid product" do
-        @product = FactoryBot.build(:product)
-        expect(@product).to be_valid
-      end
-      it "is an invalid product, name is missing" do
-        @product = FactoryBot.build(:product, name: "")
-        expect(@product).not_to be_valid
-      end
-      it "is an invalid product, price is missing" do
-        @product = FactoryBot.build(:product, price: "")
-        expect(@product).not_to be_valid
+      it 'destroys product and redirects to products_path' do
+        delete :destroy, params: { id: @product.id }
+        expect(response).to redirect_to products_path
       end
     end
+
   end
 
-  describe 'PUT/PATCH #update' do
-    before do
-      @product = FactoryBot.create(:product)
-    end
-    it "updates product's name" do
-      @user_admin = FactoryBot.create(:admin)
-      sign_in @user_admin
-      @update = { id: @product_id, name: @product.name, category: @product.category, description: @product.description, image_url: @product.image_url,  price: @product.price }
-      put :update, params: {id: @product.id, product: @update}
-      @product.reload
-      expect(@product.name).to eq @product.name
-    end
-  end
-
-  describe 'DELETE #destroy' do
-    it "delete product" do
-      @product = FactoryBot.create(:product)
-      @user_admin = FactoryBot.create(:admin)
-      sign_in @user_admin
-      delete :destroy, params: {id: @product.id}
-      expect(response).to redirect_to products_path
-    end
-  end
 end

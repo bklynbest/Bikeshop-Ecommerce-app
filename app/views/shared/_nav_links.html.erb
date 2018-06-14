@@ -8,17 +8,17 @@
       <%= form.submit 'Search' %>
       <% end %>
 
-    <div class="nav_links">
-      <%= link_to('Home', root_path) %> |
-      <%= link_to('Products', products_path) %> |
-      <%= link_to('About', simple_pages_about_path) %> |
-      <%= link_to('Contact', simple_pages_contact_path) %> |
-      <% if user_signed_in? %>
-      <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
-      <% else %>
-      <%= link_to('Login', new_user_session_path) %>
-      <% end %>
-    </div>
+      <div class="nav_links">
+        <%= link_to('Home', root_path) %> |
+        <%= link_to('Products', products_path) %> |
+        <%= link_to('About', simple_pages_about_path) %> |
+        <%= link_to('Contact', simple_pages_contact_path) %> |
+        <% if user_signed_in? %>
+        <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+        <% else %>
+        <%= link_to('Login', new_user_session_path) %>
+        <% end %>
+      </div>
+    </nav>
   </nav>
-</nav>
 </div>
