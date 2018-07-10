@@ -12,7 +12,9 @@ class Product < ApplicationRecord
   end
 
   def average_rating
+    Rails.cache.fetch([cache_key, __method__], expires_in: 30.minutes) do
     comments.average(:rating).to_f
+  end
   end
 
   def self.search(search_term)

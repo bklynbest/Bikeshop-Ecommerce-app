@@ -17,11 +17,13 @@ config.app_generators.javascript_engine = :javascript
     config.action_controller.perform_caching = true
 
     config.cache_store = :redis_store
+
     config.public_file_server.headers = {
-      'Cache-Control' => "public, max-age=#{2.days.seconds.to_i}"
+      'Cache-Control' => "public, max-ayge=#{2.days.seconds.to_i}"
     }
   else
-    config.action_controller.perform_caching = false
+    config.action_controller.perform_caching = true
+
 
     config.cache_store = :null_store
   end
