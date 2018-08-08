@@ -24,21 +24,13 @@ class Product < ApplicationRecord
       Product.where("name ilike ?", "%#{search_term}%")
     end
   end
-  
-  def views
-  	$redis.get("product:#{id}")
-  end
 
-  def viewed
-  	$redis.incr("product:#{id}")
-  end
+    def views
+      $redis.get("product:#{id}")
+    end
 
-  def set_recent_reviewer(user_name)
-  	$redis.set("rr_product:#{id}","#{user_name}")
-  end
-
-  def get_recent_reviewer
-  	$redis.get("rr_product:#{id}")
-  end
+    def timesviewed
+      $redis.incr("product:#{id}")
+    end
 
 end
