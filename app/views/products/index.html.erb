@@ -3,5 +3,4 @@
 <h1>Products</h1>
 <% cache(cache_key_for_products) do %>
 <%= render @products %>
-<%= link_to 'New', new_product_path %>
 <% end %>
