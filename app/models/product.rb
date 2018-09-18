@@ -25,12 +25,4 @@ class Product < ApplicationRecord
     end
   end
 
-    def views
-      $redis.get("product:#{id}")
-    end
-
-    def timesviewed
-      $redis.incr("product:#{id}")
-    end
-
 end
