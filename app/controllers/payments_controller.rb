@@ -9,7 +9,7 @@ class PaymentsController < ApplicationController
     # (begin-rescue) block for exception handling
     begin
       charge = Stripe::Charge.create(
-        amount:  (@product.price * 100).to_i,
+        amount:  (@product.price * 10000).to_i,
         currency: "usd",
         source: token,
         description: params[:stripeEmail],
